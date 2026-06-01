@@ -8,7 +8,7 @@ interface HeaderProps {
 export default function Header({ isDarkMode, handleToggle }: HeaderProps) {
   return (
     <div
-      className={`${isDarkMode ? "bg-[#172033]" : "bg-white"} flex items-center justify-between px-4 z-10  fixed h-[100px] w-full shadow-md`}
+      className={`${isDarkMode ? "bg-[#172033]" : "bg-white"} flex items-center justify-between px-4 z-20  fixed h-[100px] w-full shadow-md`}
     >
       <button
         onClick={() => {
@@ -54,7 +54,7 @@ export default function Header({ isDarkMode, handleToggle }: HeaderProps) {
         </button>
         <button
           onClick={() => {
-            const el = document.getElementById("our-recent-work");
+            const el = document.getElementById("agile");
             if (el) {
               el.scrollIntoView({ behavior: "smooth" });
             }

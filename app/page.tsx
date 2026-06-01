@@ -5,6 +5,7 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Offer from "./components/Offer";
 import RecentWork from "./components/RecentWork";
+import Agile from "./components/Agile";
 
 export default function page() {
   // Primary Color - #1d2737
@@ -14,7 +15,7 @@ export default function page() {
     mainTitle: false,
     mainDesc: false,
     sideDescription: false,
-    isDarkMode: true,
+    isDarkMode: false,
   });
 
   const handleToggleThemeMode = () => {
@@ -107,6 +108,7 @@ export default function page() {
       </div>
       <Offer isDarkMode={show.isDarkMode} />
       <RecentWork isDarkMode={show.isDarkMode} />
+      <Agile isDarkMode={show.isDarkMode} />
       <Footer isDarkMode={show.isDarkMode} />
     </div>
   );
