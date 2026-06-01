@@ -1,4 +1,3 @@
-
 interface RecentWorkProps {
   isDarkMode: boolean;
 }
@@ -13,7 +12,7 @@ export default function RecentWork({ isDarkMode }: RecentWorkProps) {
         ${isDarkMode ? "text-white" : " text-[#181f30]"}`}
       >
         <div className="flex items-center mx-auto w-[80%] h-[50%]">
-          <p className="text-[36px] font-semibold">Our Recent Work</p>
+          <p className="text-[36px] font-bold">Our Recent Work</p>
         </div>
         <div className="h-[50%] w-[80%] mx-auto">
           <div className="h-[85%] flex items-center">
@@ -21,7 +20,7 @@ export default function RecentWork({ isDarkMode }: RecentWorkProps) {
               <p className="text-xl font-semibold">
                 Baccarat Scoreboard System
               </p>
-              <p>
+              <p className="text-[14px]">
                 Lorem, ipsum dolor sit amet consectetur adipisicing elit.
                 Dolorem excepturi neque amet maxime. Inventore veritatis
                 accusantium voluptas facere eligendi, magnam nisi dolore ratione
@@ -30,6 +29,9 @@ export default function RecentWork({ isDarkMode }: RecentWorkProps) {
                 consectetur dolor repellendus nostrum quidem delectus fugit
                 expedita?
               </p>
+              <button className="text-[14px] bg-[#181f30] hover:bg-[#252f49] text-white font-bold px-4 py-2 rounded-md cursor-pointer">
+                Read more
+              </button>
             </div>
             <div className="w-[35%]">
               <img
@@ -45,7 +47,7 @@ export default function RecentWork({ isDarkMode }: RecentWorkProps) {
         h-screen p-4
         ${isDarkMode ? "text-white" : " text-[#181f30]"}`}
       >
-        <div className="h-[50%] w-[80%] mx-auto">
+        <div className="h-[50%] w-[80%] mx-auto text-[14px]">
           <div className="h-[85%] flex items-center">
             <div className="w-[35%]">
               {/* <img
@@ -66,6 +68,9 @@ export default function RecentWork({ isDarkMode }: RecentWorkProps) {
                 consectetur dolor repellendus nostrum quidem delectus fugit
                 expedita?
               </p>
+              <button className=" bg-[#181f30] hover:bg-[#252f49] text-white font-bold px-4 py-2 rounded-md cursor-pointer">
+                Read more
+              </button>
             </div>
           </div>
         </div>
