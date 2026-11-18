@@ -80,7 +80,7 @@ export default function HomeClient() {
 
       <Offer isDarkMode={isDarkMode} />
       <RecentWork isDarkMode={isDarkMode} />
-      <ContactUs />
+      <ContactUs isDarkMode={isDarkMode} />
       {/* <Agile isDarkMode={isDarkMode} /> */}
       <Footer />
     </div>
