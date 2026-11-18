@@ -80,7 +80,17 @@ export default function HomeClient() {
 
       <Offer isDarkMode={isDarkMode} />
       <RecentWork isDarkMode={isDarkMode} />
-      <ContactUs isDarkMode={isDarkMode} />
+      <ContactUs
+        isDarkMode={isDarkMode}
+        onSubmit={async (values) => {
+          const res = await fetch("/api/contact", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(values),
+          });
+          if (!res.ok) throw new Error("Failed");
+        }}
+      />
       {/* <Agile isDarkMode={isDarkMode} /> */}
       <Footer />
     </div>

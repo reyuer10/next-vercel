@@ -50,6 +50,7 @@ export default function Header() {
   };
 
   const scrollToSection = (id: string) => {
+    console.log(id);
     closeMenus();
     const go = () =>
       document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
@@ -107,40 +108,55 @@ export default function Header() {
             </button>
           ))}
 
-          <div ref={exploreRef} className="relative">
+          <div
+            ref={exploreRef}
+            className="relative"
+            onMouseEnter={() => setIsExploreOpen(true)}
+            onMouseLeave={() => setIsExploreOpen(false)}
+          >
             <button
               type="button"
-              onMouseEnter={() => setIsExploreOpen(true)}
-              onMouseLeave={() => setIsExploreOpen(false)}
               aria-expanded={isExploreOpen}
               aria-haspopup="true"
               className={`flex cursor-pointer items-center gap-2 text-[14px] font-medium ${text}`}
             >
               Explore
               <ChevronDown
-                className={`transition-transform duration-200 ${isExploreOpen ? "rotate-180" : ""}`}
+                className={`transition-transform duration-200 ${
+                  isExploreOpen ? "rotate-180" : ""
+                }`}
                 size={20}
                 strokeWidth={2.3}
               />
             </button>
 
             <div
-              className={`absolute right-0 top-full z-50 mt-3 w-[320px] rounded-xl border p-2 text-[14px] shadow-xl transition-all duration-200
-                ${bg} ${divider}
-                ${isExploreOpen ? "pointer-events-auto translate-y-0 opacity-100" : "pointer-events-none translate-y-2 opacity-0"}`}
+              className={`absolute right-0 top-full z-50 w-[320px] pt-3 transition-all duration-200 ${
+                isExploreOpen
+                  ? "pointer-events-auto translate-y-0 opacity-100"
+                  : "pointer-events-none translate-y-2 opacity-0"
+              }`}
             >
-              {exploreData.map((p) => (
-                <button
-                  key={p.id}
-                  type="button"
-                  tabIndex={isExploreOpen ? 0 : -1}
-                  onClick={() => goToPage(p.path)}
-                  className={`block w-full cursor-pointer rounded-lg px-3 py-2 text-left ${hover} ${isDarkMode ? "text-zinc-200" : "text-[#172033]"}`}
-                >
-                  <p className="font-bold">{p.primaryTitle}</p>
-                  <p className={`text-[12px] ${subText}`}>{p.secondaryTitle}</p>
-                </button>
-              ))}
+              <div
+                className={`rounded-xl border p-2 text-[14px] shadow-xl ${bg} ${divider}`}
+              >
+                {exploreData.map((p) => (
+                  <button
+                    key={p.id}
+                    type="button"
+                    tabIndex={isExploreOpen ? 0 : -1}
+                    onClick={() => goToPage(p.path)}
+                    className={`block w-full cursor-pointer rounded-lg px-3 py-2 text-left ${hover} ${
+                      isDarkMode ? "text-zinc-200" : "text-[#172033]"
+                    }`}
+                  >
+                    <p className="font-bold">{p.primaryTitle}</p>
+                    <p className={`text-[12px] ${subText}`}>
+                      {p.secondaryTitle}
+                    </p>
+                  </button>
+                ))}
+              </div>
             </div>
           </div>
         </nav>
@@ -162,6 +178,7 @@ export default function Header() {
 
           <button
             type="button"
+            onClick={() => scrollToSection("contact-us")}
             className={`hidden cursor-pointer rounded-lg px-4 py-2 text-[14px] font-semibold sm:block ${contactBtn}`}
           >
             Contact Us
@@ -221,6 +238,7 @@ export default function Header() {
 
             <button
               type="button"
+              onClick={() => scrollToSection("contact-us")}
               className={`mt-5 w-full cursor-pointer rounded-lg px-4 py-3 text-base font-semibold sm:hidden ${contactBtn}`}
             >
               Contact Us
