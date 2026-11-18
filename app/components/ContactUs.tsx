@@ -183,7 +183,7 @@ export default function ContactUs({ isDarkMode, onSubmit }: ContactUsProps) {
           <h2
             className="text-3xl font-bold tracking-tight sm:text-5xl"
             style={{
-              color: isDarkMode ? "black" : "#eef1f7",
+              color: isDarkMode ? "#eef1f7" : "#181f30",
             }}
           >
             Let's Build Something
