@@ -6,6 +6,7 @@ import RecentWork from "./RecentWork";
 import Agile from "./Agile";
 import Footer from "./Footer";
 import { useTheme } from "../context/ThemeProvider";
+import ContactUs from "./ContactUs";
 
 export default function HomeClient() {
   const { isDarkMode, toggleTheme } = useTheme();
@@ -56,42 +57,31 @@ export default function HomeClient() {
     h-full w-full fixed overflow-y-scroll transition-colors
     ${isDarkMode ? "bg-linear-to-b from-[#151c27] via-[#181f30] to-[#151c27] text-[#cac6b1]" : ""}`}
     >
-      <div id="main" className="h-screen flex items-center justify-center">
+      <div
+        id="main"
+        className="relative h-dvh flex items-center justify-center overflow-hidden"
+      >
         <img
-          className={`w-[80vh] transition-opacity duration-700
-          ${show.mainTitle ? "opacity-100 translate-y-0" : "opacity-0 translate-y-5"}
-          `}
+          alt="nXde"
+          className={`w-[min(80vh,85vw)] transition-opacity duration-700
+      ${show.mainTitle ? "opacity-100 translate-y-0" : "opacity-0 translate-y-5"}`}
           src={isDarkMode ? "/img/logo/nodex.png" : "/img/logo/nodex_dark.png"}
         />
+
         <p
-          className={` transition-opacity duration-300
-            ${show.mainDesc ? "opacity-100 translate-y-0" : "opacity-0 translate-y-5"}
-            ${isDarkMode ? "" : "text-[#181f30]"}
-             absolute bottom-8 text-2xl tracking-widest`}
+          className={`absolute bottom-8 px-4 text-center text-base sm:text-2xl tracking-widest
+      transition-opacity duration-300
+      ${show.mainDesc ? "opacity-100 translate-y-0" : "opacity-0 translate-y-5"}
+      ${isDarkMode ? "" : "text-[#181f30]"}`}
         >
           SYSTEMS & IT SOLUTIONS
         </p>
-        <div className="absolute -right-53 bottom-60 overflow-hidden -rotate-90 bg-[#181f30] text-[#cac6b1] cursor-pointer ">
-          <p
-            role="button"
-            onClick={() => {
-              const el = document.getElementById("what-we-offer");
-              if (el) {
-                el.scrollIntoView({ behavior: "smooth" });
-              }
-            }}
-            className={`
-            transition-opacity duration-300 w-[500px] h-[50px] px-4 flex items-center
-            ${show.sideDescription ? " opacity-100 animate-pulse" : "opacity-0"}     `}
-          >
-            Scroll down to Explore
-          </p>
-        </div>
       </div>
 
       <Offer isDarkMode={isDarkMode} />
       <RecentWork isDarkMode={isDarkMode} />
-      <Agile isDarkMode={isDarkMode} />
+      <ContactUs />
+      {/* <Agile isDarkMode={isDarkMode} /> */}
       <Footer />
     </div>
   );

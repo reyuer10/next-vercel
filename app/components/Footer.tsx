@@ -1,55 +1,66 @@
 import { facebookIcon } from "../icon/footer";
 
+const links = [
+  { label: "Home", id: "main" },
+  { label: "What we offer", id: "what-we-offer" },
+  { label: "Our recent work", id: "our-recent-work" },
+  // { label: "Our Agile Development Process", id: "agile-process" },
+];
+
+function scrollToSection(e: React.MouseEvent<HTMLAnchorElement>, id: string) {
+  e.preventDefault();
+  document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+}
+
 export default function Footer() {
   return (
-    <div
-      className={`bg-[#171e2d] border-t-[0.5px] border-zinc-600 h-[50vh] text-zinc-500 text-[14px] py-4`}
-    >
-      <div className="h-[80%] flex justify-between  gap-x-8 w-[80%] mx-auto">
-        <div className="py-4 w-[calc(100%/4)] space-y-4">
-          <div>
-            <img 
-            className="h-[15vh]"
-            src="/img/logo/nodex.png" />
-          </div>
-          <div>
-            <p>
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolores
-              laborum ipsam facilis veritatis doloribus tempora impedit
-              laudantium aspernatur porro amet?
-            </p>
-          </div>
+    <footer className="border-t-[0.5px] border-zinc-600 bg-[#171e2d] text-sm text-zinc-400">
+      <div className="mx-auto grid max-w-6xl gap-10 px-5 py-12 sm:px-8 md:grid-cols-[1.4fr_1fr_1fr] md:gap-12 md:py-16">
+        <div className="space-y-4">
+          <img
+            src="/img/logo/nodex.png"
+            alt="nXde"
+            className="h-16 w-auto sm:h-20"
+          />
+          <p className="max-w-sm leading-relaxed">
+            Custom web applications, gaming systems and network infrastructure,
+            built in short sprints and maintained after launch.
+          </p>
         </div>
-        <div className="w-[calc(100%/4)] flex flex-col items-start py-4 space-y-3">
-          <button className=" cursor-pointer font-semibold tracking-wide text-white">
-            Home
-          </button>
-          <button className=" cursor-pointer">What we offer</button>
-          <button className=" cursor-pointer">Our recent work</button>
-          <button className=" cursor-pointer">
-            Our Agile Development Process
-          </button>
-        </div>
-        <div className="w-[calc(100%/4)] py-4 ">
-          <p className=" font-semibold tracking-wide text-white">Platform</p>
-        </div>
-        <div className="w-[calc(100%/4)] py-4 ">
-          <p className=" font-semibold tracking-wide text-white">
+
+        <nav aria-label="Footer" className="flex flex-col items-start gap-3">
+          <p className="font-semibold tracking-wide text-white">Explore</p>
+          {links.map((link) => (
+            <a
+              key={link.id}
+              href={`#${link.id}`}
+              onClick={(e) => scrollToSection(e, link.id)}
+              className="transition-colors hover:text-white"
+            >
+              {link.label}
+            </a>
+          ))}
+        </nav>
+
+        <div className="space-y-3">
+          <p className="font-semibold tracking-wide text-white">
             Join Our Community
           </p>
-          <button
-            onClick={() =>
-              (window.location.href = "https://www.facebook.com/nodexsystems")
-            }
-            className="cursor-pointer"
+          <a
+            href="https://www.facebook.com/nodexsystems"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="nXde on Facebook"
+            className="inline-block transition-colors hover:text-white"
           >
             {facebookIcon}
-          </button>
+          </a>
         </div>
       </div>
-      <div className="h-[20%] border-t-[0.5px] border-zinc-600 flex items-center justify-center">
+
+      <div className="border-t-[0.5px] border-zinc-600 px-5 py-5 text-center sm:px-8">
         <p>© 2026 NodeX. All rights reserved.</p>
       </div>
-    </div>
+    </footer>
   );
 }
